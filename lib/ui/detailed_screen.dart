@@ -51,7 +51,7 @@ class _DetailedScreenState extends State<DetailedScreen> {
     return Scaffold(
       backgroundColor: myConstants.primaryColor,
       appBar: AppBar(
-        title: Text('Forecasts'),
+        title: const Text('Forecasts'),
         centerTitle: true,
         elevation: 0.0,
         actions: [
@@ -59,7 +59,7 @@ class _DetailedScreenState extends State<DetailedScreen> {
             padding: const EdgeInsets.only(right: 8.0),
             child: IconButton(onPressed: (){
               print('settings');
-            }, icon: Icon (Icons.settings)),
+            }, icon: const Icon (Icons.settings)),
           )
         ],
       ),
@@ -74,7 +74,7 @@ class _DetailedScreenState extends State<DetailedScreen> {
               child: Container(
                 height: size.height*.75,
                 width: size.width,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(50),
@@ -92,7 +92,7 @@ class _DetailedScreenState extends State<DetailedScreen> {
                           height: 300,
                           width: size.width *.7,
                           decoration: BoxDecoration(
-                            gradient: LinearGradient(
+                            gradient: const LinearGradient(
                               begin: Alignment.topLeft,
                               end: Alignment.center,
                               colors: [
@@ -103,7 +103,7 @@ class _DetailedScreenState extends State<DetailedScreen> {
                               boxShadow: [
                                 BoxShadow(
                                   color: Colors.blue.withOpacity(.1),
-                                  offset: Offset(0, 25),
+                                  offset: const Offset(0, 25),
                                   blurRadius: 3,
                                   spreadRadius: -10
                                 )
@@ -120,7 +120,7 @@ class _DetailedScreenState extends State<DetailedScreen> {
                                   left:30,
                                   child: Padding(
                                     padding: const EdgeInsets.only(bottom: 10.0),
-                                    child: Text(getForecastWeather(0)['weatherName'], style: TextStyle(
+                                    child: Text(getForecastWeather(0)['weatherName'], style: const TextStyle(
                                       fontSize: 20, color: Colors.white
                                     ),),
                                   )),
@@ -129,7 +129,7 @@ class _DetailedScreenState extends State<DetailedScreen> {
                                   left: 20,
                                   child: Container(
                                     width: size.width*.8,
-                                    padding: EdgeInsets.symmetric(horizontal: 10),
+                                    padding: const EdgeInsets.symmetric(horizontal: 10),
                                     child: Row(
                                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                       children: [
@@ -182,7 +182,7 @@ class _DetailedScreenState extends State<DetailedScreen> {
                               height: 265,
                               width: size.width,
                               child: ListView.builder(
-                                  physics: BouncingScrollPhysics(),
+                                  physics: const BouncingScrollPhysics(),
                                   shrinkWrap: true,
                                   itemCount: 7,
                                   itemBuilder: (BuildContext context, int index)
@@ -190,9 +190,9 @@ class _DetailedScreenState extends State<DetailedScreen> {
                                     return
                                       Card(
                                         elevation: 3.0,
-                                        margin: EdgeInsets.only(bottom: 20),
+                                        margin: const EdgeInsets.only(bottom: 20),
                                         child: Padding (
-                                          padding: EdgeInsets.all(8),
+                                          padding: const EdgeInsets.all(8),
                                           child: Column(
                                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                                             children: [
@@ -200,7 +200,7 @@ class _DetailedScreenState extends State<DetailedScreen> {
                                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                 crossAxisAlignment: CrossAxisAlignment.center,
                                                 children: [
-                                                  Text(getForecastWeather(index)['forecastDate'], style: TextStyle(
+                                                  Text(getForecastWeather(index)['forecastDate'], style: const TextStyle(
                                                     color: Color(0xff6696f5),
                                                     fontWeight: FontWeight.w600,
                                                   ),
@@ -221,7 +221,7 @@ class _DetailedScreenState extends State<DetailedScreen> {
                                                                 fontSize: 15,
                                                                 fontWeight: FontWeight.w600,
                                                                 fontFeatures: [
-                                                                  FontFeature.enable('sups'),
+                                                                  const FontFeature.enable('sups'),
                                                                 ]
                                                             ),)
                                                         ],
@@ -240,7 +240,7 @@ class _DetailedScreenState extends State<DetailedScreen> {
                                                                 fontSize: 15,
                                                                 fontWeight: FontWeight.w600,
                                                                 fontFeatures: [
-                                                                  FontFeature.enable('sups'),
+                                                                  const FontFeature.enable('sups'),
                                                                 ]
                                                             ),)
                                                         ],
@@ -249,7 +249,7 @@ class _DetailedScreenState extends State<DetailedScreen> {
                                                   ),
                                                 ],
                                               ),
-                                              SizedBox(height: 10,),
+                                              const SizedBox(height: 10,),
                                               Row(
                                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                 children: [
@@ -257,8 +257,8 @@ class _DetailedScreenState extends State<DetailedScreen> {
                                                     mainAxisAlignment: MainAxisAlignment.center,
                                                     children: [
                                                       Image.asset('assets/' + getForecastWeather(index)['weatherIcon'], width: 30,),
-                                                      SizedBox(width: 5,),
-                                                      Text(getForecastWeather(index)['weatherName'], style: TextStyle(
+                                                      const SizedBox(width: 5,),
+                                                      Text(getForecastWeather(index)['weatherName'], style: const TextStyle(
                                                           color: Colors.grey,
                                                           fontSize: 16
                                                       ),),
@@ -267,11 +267,11 @@ class _DetailedScreenState extends State<DetailedScreen> {
                                                   Row(
                                                     mainAxisAlignment: MainAxisAlignment.center,
                                                     children: [
-                                                      Text(getForecastWeather(index)['chanceOfRain'].toString() + '%', style: TextStyle(
+                                                      Text(getForecastWeather(index)['chanceOfRain'].toString() + '%', style: const TextStyle(
                                                           color: Colors.grey,
                                                           fontSize: 18
                                                       ),),
-                                                      SizedBox(width: 5,),
+                                                      const SizedBox(width: 5,),
                                                       Image.asset('assets/lightrain.png', width: 30,),
                                                     ],
                                                   ),

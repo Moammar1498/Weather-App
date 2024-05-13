@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:ui';
 import 'package:flutter/services.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
@@ -20,7 +19,7 @@ class _HomeState extends State<Home> {
   TextEditingController cityController = TextEditingController();
   Constants myConstants = Constants();
 
-  static String API_KEY = '37591acf4d9a486f8b5120452230102';
+  static String apiKey = '37591acf4d9a486f8b5120452230102';
 
   String location = 'London';
   String weatherIcon = 'heavycloud.png';
@@ -35,9 +34,7 @@ class _HomeState extends State<Home> {
 
   String currentWeatherStatus = '';
 
-  String searchWeatherAPI = "https://api.weatherapi.com/v1/forecast.json?key=" +
-      API_KEY +
-      "&days=7&q=";
+  String searchWeatherAPI = "https://api.weatherapi.com/v1/forecast.json?key=$apiKey&days=7&q=";
 
 //call Api
   void fetchWeatherData(String searchText) async {
@@ -62,7 +59,7 @@ class _HomeState extends State<Home> {
         //weather update
         currentWeatherStatus = currentWeather["condition"]["text"];
         weatherIcon =
-            currentWeatherStatus.replaceAll(' ', '').toLowerCase() + ".png";
+            "${currentWeatherStatus.replaceAll(' ', '').toLowerCase()}.png";
         temperature = currentWeather["temp_c"].toInt();
         windSpeed = currentWeather["wind_kph"].toInt();
         humidity = currentWeather["humidity"].toInt();
@@ -83,7 +80,7 @@ class _HomeState extends State<Home> {
 
     if (wordList.isNotEmpty) {
       if (wordList.length > 1) {
-        return wordList[0] + " " + wordList[1];
+        return "${wordList[0]} ${wordList[1]}";
       } else {
         return wordList[0];
       }
@@ -118,7 +115,7 @@ class _HomeState extends State<Home> {
                   children: [
                     Container(
                         padding:
-                            EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                            const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
                         height: size.height * .7,
                         decoration: BoxDecoration(
                           gradient: myConstants.linearGradientBlue,
@@ -127,7 +124,7 @@ class _HomeState extends State<Home> {
                               color: myConstants.primaryColor.withOpacity(0.5),
                               spreadRadius: 5,
                               blurRadius: 7,
-                              offset: Offset(0, 3),
+                              offset: const Offset(0, 3),
                             ),
                           ],
                           borderRadius: BorderRadius.circular(20),
@@ -139,7 +136,7 @@ class _HomeState extends State<Home> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                Image(
+                                const Image(
                                   image: AssetImage('assets/menu.png'),
                                   height: 40,
                                   width: 40,
@@ -151,12 +148,12 @@ class _HomeState extends State<Home> {
                                       'assets/pin.png',
                                       width: 20,
                                     ),
-                                    SizedBox(
+                                    const SizedBox(
                                       width: 2,
                                     ),
                                     Text(
                                       location,
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                           color: Colors.white, fontSize: 16),
                                     ),
                                     IconButton(
@@ -173,7 +170,7 @@ class _HomeState extends State<Home> {
                                                       child: Container(
                                                         height:
                                                             size.height * .2,
-                                                        padding: EdgeInsets
+                                                        padding: const EdgeInsets
                                                             .symmetric(
                                                                 horizontal: 20,
                                                                 vertical: 10),
@@ -187,7 +184,7 @@ class _HomeState extends State<Home> {
                                                                     .primaryColor,
                                                               ),
                                                             ),
-                                                            SizedBox(
+                                                            const SizedBox(
                                                               height: 10,
                                                             ),
                                                             TextField(
@@ -235,7 +232,7 @@ class _HomeState extends State<Home> {
                                                       ),
                                                     ));
                                       },
-                                      icon: Icon(
+                                      icon: const Icon(
                                         Icons.keyboard_arrow_down,
                                         color: Colors.white,
                                       ),
@@ -254,14 +251,14 @@ class _HomeState extends State<Home> {
                             ),
                             SizedBox(
                               height: 100,
-                              child: Image.asset('assets/' + weatherIcon),
+                              child: Image.asset('assets/$weatherIcon'),
                             ),
                             Row(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Padding(
-                                  padding: EdgeInsets.only(top: 8),
+                                  padding: const EdgeInsets.only(top: 8),
                                   child: Text(
                                     temperature.toString(),
                                     style: TextStyle(
@@ -285,23 +282,23 @@ class _HomeState extends State<Home> {
                             ),
                             Text(
                               currentWeatherStatus,
-                              style: TextStyle(
+                              style: const TextStyle(
                                   color: Colors.white70, fontSize: 20),
                             ),
                             Text(
                               currentDate,
-                              style: TextStyle(
+                              style: const TextStyle(
                                 color: Colors.white70,
                               ),
                             ),
                             Container(
-                              padding: EdgeInsets.symmetric(horizontal: 20),
-                              child: Divider(
+                              padding: const EdgeInsets.symmetric(horizontal: 20),
+                              child: const Divider(
                                 color: Colors.white70,
                               ),
                             ),
                             Container(
-                              padding: EdgeInsets.symmetric(horizontal: 10),
+                              padding: const EdgeInsets.symmetric(horizontal: 10),
                               child: SingleChildScrollView(
                                 scrollDirection: Axis.horizontal,
                                 child: Row(
@@ -328,7 +325,7 @@ class _HomeState extends State<Home> {
                           ],
                         )),
                     Container(
-                      padding: EdgeInsets.only(top: 5),
+                      padding: const EdgeInsets.only(top: 5),
                       height: size.height * .2,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -337,7 +334,7 @@ class _HomeState extends State<Home> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Text(
+                              const Text(
                                 'Today',
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
@@ -357,7 +354,7 @@ class _HomeState extends State<Home> {
                               )
                             ],
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 2,
                           ),
                           SizedBox(
@@ -365,7 +362,7 @@ class _HomeState extends State<Home> {
                             child: ListView.builder(
                               itemCount: hourlyWeatherForecast.length,
                                 scrollDirection: Axis.horizontal,
-                                physics: BouncingScrollPhysics(),
+                                physics: const BouncingScrollPhysics(),
                                 itemBuilder: (context, index) {
                                   String currentTime = DateFormat('HH:mm:ss')
                                       .format(DateTime.now());
@@ -381,27 +378,26 @@ class _HomeState extends State<Home> {
                                       hourlyWeatherForecast[index]['condition']
                                           ['text'];
                                   String forecastWeatherIcon =
-                                      forecastWeatherName
+                                      '${forecastWeatherName
                                               .replaceAll(' ', '')
-                                              .toLowerCase() +
-                                          '.png';
+                                              .toLowerCase()}.png';
                                   String forecastTemperature =
                                       hourlyWeatherForecast[index]['temp_c']
                                           .round()
                                           .toString();
                                   return Container(
-                                    padding: EdgeInsets.symmetric(vertical: 15),
-                                    margin: EdgeInsets.only(right: 20),
+                                    padding: const EdgeInsets.symmetric(vertical: 15),
+                                    margin: const EdgeInsets.only(right: 20),
                                     width: 65,
                                     decoration: BoxDecoration(
                                         color: currentHour == forecastHour
                                             ? Colors.white
                                             : myConstants.primaryColor,
-                                        borderRadius: BorderRadius.all(
+                                        borderRadius: const BorderRadius.all(
                                             Radius.circular(50)),
                                         boxShadow: [
                                           BoxShadow(
-                                              offset: Offset(0, 1),
+                                              offset: const Offset(0, 1),
                                               blurRadius: 5,
                                               color: myConstants.primaryColor
                                                   .withOpacity(.2))
@@ -420,7 +416,7 @@ class _HomeState extends State<Home> {
                                         Image(
                                           width: 20,
                                           image: AssetImage(
-                                              'assets/' + forecastWeatherIcon),
+                                              'assets/$forecastWeatherIcon'),
                                         ),
                                         Row(
                                           mainAxisAlignment:
